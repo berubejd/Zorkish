@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Zorkish!</title>
+        <link href="static/style.css" rel="stylesheet">
+        <script>
+            var current_location = 0;
+            // Define array of objects to hold rooms and their exits
+            var locations = [
+                {
+                    "title":"West of House",
+                    "description":"You are standing in an open field west of a white house, with a boarded front door. There is a small mailbox here.",
+                    "options":[
+                        {
+                            "option":"Open Mailbox",
+                            "response":"You pull a leaflet out of the mailbox that reads:\n\nWelcome to Zorkish!  This is just a couple of fake rooms from Zork.  Other than this, most of the text is from the original game.",
+                            "exit":null
+                        },
+                        {
+                            "option":"Go East",
+                            "response":"The door is locked, and there is evidently no key.",
+                            "exit":null
+                        },
+                        {
+                            "option":"Go West",
+                            "response":null,
+                            "exit":1
+                        }
+                    ]
+                },
+                {
+                    "title":"Forest",
+                    "description":"You are in a forest, with trees in all directions around you.",
+                    "options":[
+                        {
+                            "option":"Go East",
+                            "response":null,
+                            "exit":0
+                        },
+                        {
+                            "option":"Go West",
+                            "reponse":null,
+                            "exit":2
+                        }
+                    ]
+                },
+                {
+                    "title":"Dim Forest",
+                    "description":"You are in a dimly lit forest, with large trees all around. One particularly large tree with some low branches stands here.",
+                    "options":[
+                        {
+                            "option":"Go East",
+                            "response":null,
+                            "exit":1
+                        }
+                    ]
+                }
+            ];
+
+            // Format prompt box and make sure response is valid
+            function quest(location) {
+                var message = (
+                    locations[location].title +
+                    "\n" +
+                    locations[location].description + 
+                    "\n\nChoose your destiny: (0 to quit)\n\n" +
+                    formatOptions(locations[location])
+                );
+                do {
+                    var choice = parseInt(prompt(message, ''));
+                } while (isNaN(choice) || choice > locations[location].options.length);
+                
+                return choice;
+            }
+
+            // Format and return options for prompt
+            function formatOptions(location) {
+                var options = "";
+                for (var i=0; i<location.options.length; i++) {
+                    var option_choice = i + 1 // Start options at 1 instead of 0
+                    options += "[" + option_choice + "] " + location.options[i].option + "\n"
+                }
+                return options;
+            }
+
+            // Process chosen option.  Alert on a response and move to another item in the array that
+            // corresponds with the 'exit'
+            function processResponse(response) {
+                option = locations[current_location].options[response]
+                if (option.response != null) {
+                    alert(option.response);
+                }
+                if (option.exit != null) {
+                    current_location = option.exit;
+                }
+            }
+
+            // Loop until user responds with a zero
+            while (true) {
+                var response = quest(current_location);
+                if (response == 0) {
+                    break;
+                }
+                processResponse(response - 1);
+            }
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                Introductory JavaScript
+            </header>
+            <div class="content">
+                <div class="main">
+                    <h1>Zorkish!</h1>
+                    <hr>
+                    <script>
+                        document.write('<p>Thank you for playing!</p>');
+                    </script>
+                </div>
+            </div>
+            <footer>
+                Jeffrey Berube • Jun 2020
+            </footer>
+        </div>
+    </body>
+</html>

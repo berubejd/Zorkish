@@ -1,0 +1,96 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  text-align: center;
+  background: #325886;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    vertical-align: middle;
+    width: 100%;
+    padding: 1rem 0 .5rem 0;
+    text-align: center;
+    color: rgb(255,255,255);
+    font-size: 4rem;
+    letter-spacing: 2px;
+}
+
+.wrapper {
+    padding-top: 8rem;
+}
+
+.content {
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.main {
+    margin: 1rem;
+    padding: 1.5rem;
+    border-radius: .5rem;
+    background: #447AB9;
+}
+
+footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: 2rem;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3.25rem;
+}
+
+a {
+    color: #FEF265;
+}
+
+a:visited {
+    color: #FCE8A4;
+}
+
+p {
+    max-width: 600px;
+    margin: 1rem auto;
+    text-align: justify;
+}
+
+hr {
+    margin-bottom: 2rem;
+}
